@@ -13,8 +13,7 @@ public class Init extends JFrame{
 	
 	//private ImageIcon startIcon = new ImageIcon("SelectPlane.png");
 	//private Image startimg = startIcon.getImage();
-	
-	Change_Screen cs = new Change_Screen();
+
 	
 	private JLabel gameScreen;
 	private Init me = this;
