@@ -19,6 +19,7 @@ public class yosi extends JLabel{
 	private boolean right;
 	private boolean up;
 	private boolean down;
+	private boolean isCrash=false;
 	
 	private game_screen gs;
 	
@@ -112,6 +113,13 @@ public class yosi extends JLabel{
 	}
 	public void setLife(int life) {
 		this.life = life;
+	}
+	
+	public boolean isCrash() {
+		return isCrash;
+	}
+	public void setCrash(boolean isCrash) {
+		this.isCrash = isCrash;
 	}
 	
 	public yosi() {
