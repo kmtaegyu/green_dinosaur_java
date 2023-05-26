@@ -140,7 +140,7 @@ public class game_screen extends JFrame {
 					repaint();
 					break;
 				case KeyEvent.VK_UP:
-					if (!yosi.isUp() && !yosi.isDown() && yosi.getState() == 0)
+					yosi.setCrash(true);
 
 						repaint();
 					break;
@@ -193,6 +193,10 @@ public class game_screen extends JFrame {
 				 case KeyEvent.VK_SPACE:
 	                dooley.setShooting(false);
 	                break;
+				case KeyEvent.VK_UP:
+					 yosi.setCrash(false);
+					 repaint();
+					 break;
 				 case KeyEvent.VK_A:
 					 dooley.setLeft(false);
 					 break;
@@ -219,7 +223,7 @@ public class game_screen extends JFrame {
 					meteor = new Meteor();
 					meteorList.add(meteor);
 					add(meteor);
-					Thread.sleep(300);
+					Thread.sleep(1000);
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -287,7 +291,7 @@ public class game_screen extends JFrame {
 	private void yosimeteorAppear() { //요시 먹뱉 운석 생성
 		for (int i = 0; i < meteorList.size(); i++) {
 			meteor = meteorList.get(i);
-			if (isYosiCrash(meteor) && !meteor.getyosiCrashstate()) {
+			if (yosi.isCrash() && isYosiCrash(meteor) && !meteor.getyosiCrashstate()) {
 				meteor.setVisible(false); // 운석 안보이게 처리
 				System.out.println("충돌");
 				yosi.loselife();
@@ -343,7 +347,7 @@ public class game_screen extends JFrame {
 					DooleyCrash();
 					dooleyAttackAppear();
 					
-					Thread.sleep(300);
+					Thread.sleep(10);
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -353,22 +357,23 @@ public class game_screen extends JFrame {
 
 	
 	private void DooleyCrash() { //둘리와 운석 충돌 확인 
-		for (int i = 0; i < meteorList.size(); i++) 
+		for (int i = 0; i < meteorList.size(); i++) {
 			meteor = meteorList.get(i);
-		boolean horizontalcrash = false;
-		boolean verticalcrash = false;
-		if (dooley.getX() < meteor.getX_right() && dooley.getX_right() > meteor.getX()) // 수평충돌
-			horizontalcrash = true;
-		if (dooley.getY() <= meteor.getY() + 30 && dooley.getY_bottom() > meteor.getY()) // 수직충돌
-			verticalcrash = true;
-		if (verticalcrash && horizontalcrash) {
-			dooley.loselife();
+			boolean horizontalcrash = false;
+			boolean verticalcrash = false;
+			if (dooley.getX() < meteor.getX_right() && dooley.getX_right() > meteor.getX()) // 수평충돌
+				horizontalcrash = true;
+			if (dooley.getY() <= meteor.getY() + 30 && dooley.getY_bottom() > meteor.getY()) // 수직충돌
+				verticalcrash = true;
+			if (verticalcrash && horizontalcrash) {
+				dooley.loselife();
+			}
 		}
 	}
 	
 
 	private void dooleyAttackAppear() {//둘리 공격마법 생성 
-		if(dooley.getShooting() && cnt % 5 == 0) {
+		if(dooley.getShooting() && cnt % 50 == 0) {
 			dooleyAttack = new DooleyAttack(dooley);
 			dooleyAttackList.add(dooleyAttack);
 			add(dooleyAttack);
