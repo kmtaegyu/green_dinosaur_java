@@ -38,13 +38,6 @@ public class game_screen extends JFrame {
 		initObject();
 		initSetting();
 		
-		initListener();
-		meteorAppear();
-		meteorMove();
-		yosiprocess();
-		dooleyprocess();
-		setVisible(true);
-		
 		if (dinosaur.equals(Chosen_dinosaur.DINOSAUR1)) {
 			yosi = new yosi();
 			add(yosi);
@@ -61,6 +54,13 @@ public class game_screen extends JFrame {
 			yosi = new yosi();
 			add(yosi);
 		}
+		
+		initListener();
+		meteorAppear();
+		meteorMove();
+		yosiprocess();
+		dooleyprocess();
+		setVisible(true);
 		
 		lifeLaInit();
 		this.add(laLifeCount);
