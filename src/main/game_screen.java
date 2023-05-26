@@ -43,23 +43,30 @@ public class game_screen extends JFrame {
 			add(yosi);
 			crong = new Crong();
 			add(crong);
+			
+			yosiprocess();
 		} else if (dinosaur.equals(Chosen_dinosaur.DINOSAUR2)) {
 			crong = new Crong();
 			add(crong);
 			dooley = new Dooley();
 			add(dooley);
+			
+			dooleyprocess();
 		} else if (dinosaur.equals(Chosen_dinosaur.DINOSAUR3)) {
 			dooley = new Dooley();
 			add(dooley);
 			yosi = new yosi();
 			add(yosi);
+			
+			dooleyprocess();
+			yosiprocess();
 		}
 		
 		initListener();
 		meteorAppear();
 		meteorMove();
-		yosiprocess();
-		dooleyprocess();
+//		yosiprocess();
+//		dooleyprocess();
 		setVisible(true);
 		
 		lifeLaInit();
