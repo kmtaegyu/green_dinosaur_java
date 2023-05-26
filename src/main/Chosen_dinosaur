@@ -1,0 +1,20 @@
+package main;
+
+public interface Chosen_dinosaur {
+    String DINOSAUR1 = "yosi";
+    String DINOSAUR2 = "crong";
+    String DINOSAUR3 = "dooley";
+    
+    String YOSI_LEFT1 = "yosileft1";
+    String YOSI_LEFT2 = "yosileft2";
+    String YOSI_RIGHT1 = "yosiright1";
+    String YOSI_RIGHT2 = "yosiright2";
+    
+    String DOOLEY_LEFT = "dooleyleft";
+    String DOOLEY_RIGHT = "dooleyright";
+    
+    String CRONG_RIGHT1 = "crongR_1";
+    String CRONG_RIGHT2 = "crongR_2";
+    String CRONG_LEFT1 = "crongL_1";
+    String CRONG_LEFT2 = "crongL_2";
+}
