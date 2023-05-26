@@ -21,7 +21,7 @@ public class DooleyAttack extends JLabel {
 		x = dooley.getX() + 50;
 		x_right = x + SIZE;
 		y = dooley.getY() - 100;
-		speed = (int) (5 * Math.random()) + 5;
+		speed = 3
 		setIcon(dooleymagic);
 		setSize(30, 30);
 		setLocation(x, y);
