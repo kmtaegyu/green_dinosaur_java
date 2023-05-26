@@ -188,16 +188,8 @@ public class yosi extends JLabel{
 				x = x - SPEED;
 				x_right = x + SIZE;
 				setLocation(x, y);
-				if (dinosaur.equals(Chosen_dinosaur.YOSI_LEFT1)) {
-					setIcon(playerL2);
-					left("yosileft2");
-				}
-				else {
-					setIcon(playerL1);
-					left("yosileft2");
-				}
 				try {
-					Thread.sleep(2000000000); // 0.01초
+					Thread.sleep(10); // 0.01초
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				} 
