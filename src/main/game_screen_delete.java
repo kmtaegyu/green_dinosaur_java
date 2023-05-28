@@ -42,7 +42,6 @@ public class game_screen_delete extends JFrame {
 	boolean crong_alive = true;
 	
 	
-	
 	//public Plyaer player;
 	
 	public game_screen_delete(String dinosaur) {
@@ -51,21 +50,8 @@ public class game_screen_delete extends JFrame {
 		
 		lifeLaInit();
 		
-//		this.add(laLifeCount);
-//		this.add(laLifeCount2);
-//		this.add(laLifeCount3);
-//		laLifeCount.setBounds(0, 0, 50, 50);
-//		laLifeCount2.setBounds(50, 0, 50, 50);
-//		laLifeCount3.setBounds(100, 0, 50, 50);
-//		
-//		this.add(laLifeCount4);
-//		this.add(laLifeCount5);
-//		this.add(laLifeCount6);
-//		laLifeCount4.setBounds(850, 0, 50, 50);
-//		laLifeCount5.setBounds(900, 0, 50, 50);
-//		laLifeCount6.setBounds(950, 0, 50, 50);
-		
 		if (dinosaur.equals(Chosen_dinosaur.DINOSAUR1)) {
+			
 			yosi = new yosi();
 			add(yosi);
 			crong = new Crong();
@@ -80,8 +66,9 @@ public class game_screen_delete extends JFrame {
 			
 			new Thread() {
 				public void run() {
-					while(yosi_alive && crong_alive) {
+					while(true) {
 						try {
+							
 							lifeCounting_yosi_crong();
 							Game_Over();
 							repaint();
@@ -107,7 +94,7 @@ public class game_screen_delete extends JFrame {
 			
 			new Thread() {
 				public void run() {
-					while(crong_alive && dooley_alive) {
+					while(true) {
 						try {
 							lifeCounting_crong_dooley();
 							Game_Over();
@@ -134,7 +121,7 @@ public class game_screen_delete extends JFrame {
 			
 			new Thread() {
 				public void run() {
-					while(dooley_alive && yosi_alive) {
+					while(true) {
 						try {
 							lifeCounting_crong_dooley();
 							Game_Over();
@@ -514,7 +501,7 @@ public class game_screen_delete extends JFrame {
 		}
 		if (verticalcrash && horizontalcrash) {
 //			yosi.setLife(yosi.getLife() - 1);
-			yosi.loselife();
+//			yosi.loselife();
 			return true;
 		}
 		return false;
@@ -523,7 +510,15 @@ public class game_screen_delete extends JFrame {
 	private void yosimeteorAppear() { //요시 먹뱉 운석 생성
 		for (int i = 0; i < meteorList.size(); i++) {
 			meteor = meteorList.get(i);
-			if (yosi.isCrash() && isYosiCrash(meteor) && !meteor.getyosiCrashstate()) {
+			if (isYosiCrash(meteor) && !meteor.getyosiCrashstate()) {
+				yosi.loselife();
+				meteor.setVisible(false); // 운석 안보이게 처리
+				System.out.println(yosi.getLife());
+				//yosi.loselife();
+				meteor.setyosiCrashstate(true); // 요시와 운석 충돌상태
+			}
+			
+			else if (yosi.isCrash() && isYosiCrash(meteor) && !meteor.getyosiCrashstate()) {
 				meteor.setVisible(false); // 운석 안보이게 처리
 				System.out.println("충돌");
 				//yosi.loselife();
@@ -601,6 +596,9 @@ public class game_screen_delete extends JFrame {
 //				dooley.loselife();
 			if (verticalcrash && horizontalcrash) {
 				dooley.loselife();
+				
+				meteor.setVisible(false);
+				meteorList.remove(meteor);
 			}
 		}
 	}
@@ -641,10 +639,11 @@ public class game_screen_delete extends JFrame {
 	}
 	
 	private void Game_Over() {
-		if(yosi.getLife() == 0 || dooley.getLife() == 0|| crong.getLife() == 0) {
-			if(yosi.getLife() == 0) yosi_alive = false;
-			if(dooley.getLife() == 0) dooley_alive = false;
-			if(crong.getLife() == 0) crong_alive = false;
+		if(yosi.getLife() <= 0 || dooley.getLife() <= 0|| crong.getLife() <= 0) {
+			if(yosi.getLife() <= 0) yosi_alive = false;
+			if(dooley.getLife() <= 0) dooley_alive = false;
+			if(crong.getLife() <= 0) crong_alive = false;
+			//System.exit(0);
 			new Init();
 		}
 	}
