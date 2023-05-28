@@ -13,7 +13,8 @@ public class Init extends JFrame{
 	
 	//private ImageIcon startIcon = new ImageIcon("SelectPlane.png");
 	//private Image startimg = startIcon.getImage();
-
+	
+	//Change_Screen cs = new Change_Screen();
 	
 	private JLabel gameScreen;
 	private Init me = this;
@@ -81,7 +82,7 @@ public class Init extends JFrame{
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				planeImg.setIcon(planeDetailIcon1);
-				btn1.setSize(100, 143);
+				btn1.setSize(100, 100);
 				//btn1.setIcon(bigPlayer1icon);
 			}
 
@@ -103,7 +104,7 @@ public class Init extends JFrame{
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				planeImg.setIcon(planeDetailIcon2);
-				btn2.setSize(100, 143);
+				btn2.setSize(100, 100);
 				//btn2.setIcon(bigPlayer2icon);
 			}
 
@@ -126,7 +127,7 @@ public class Init extends JFrame{
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				planeImg.setIcon(planeDetailIcon3);
-				btn3.setSize(100, 143);
+				btn3.setSize(100, 100);
 				//btn3.setIcon(bigPlayer3icon);
 			}
 
