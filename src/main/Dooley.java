@@ -24,7 +24,7 @@ public class Dooley extends JLabel{
 	private final int SPEED = 4;
 	
 	private int state = 0; // 0 : live , 1 : die
-	private int life;
+	private int life=3;
 
 	
 	public int getX_right() {
@@ -109,6 +109,7 @@ public class Dooley extends JLabel{
 	
 	
 	private void initObject() {
+		
 		playerR1 = new ImageIcon("dooleyright.png");
 		playerR2 = new ImageIcon("crongL_2.png");
 		playerL1 = new ImageIcon("dooleyleft.png");
@@ -130,9 +131,10 @@ public class Dooley extends JLabel{
 		imagel1 = playerL1.getImage();
 		imagel2 = playerL2.getImage();
 	}
+
 	
 	private void initSetting() {
-		x = 500;
+		x = 80;
 		y = 450;
 		x_right = x + SIZE;
 		y_bottom = y + SIZE;
@@ -140,7 +142,7 @@ public class Dooley extends JLabel{
 		right = false;
 		up = false;
 		down = false;
-		life = 5;
+//		life = 5;
 		shooting = false;
 		setIcon(playerR1);
 		setSize(SIZE, SIZE);
@@ -148,7 +150,7 @@ public class Dooley extends JLabel{
 	}
 	
 	public void loselife() {
-		life -= 0.5;
+		life -= 1;
 	}
 	
 	public void left() {
@@ -235,5 +237,8 @@ public class Dooley extends JLabel{
 		}).start();
 	}
 	*/
+	public int getLife() {
+		// TODO Auto-generated method stub
+		return life;
+	}
 }
-
