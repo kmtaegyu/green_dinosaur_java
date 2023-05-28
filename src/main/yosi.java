@@ -139,8 +139,8 @@ public class yosi extends JLabel{
 		Image imager2 = playerR2.getImage();
 		Image imagel1 = playerL1.getImage();
 		Image imagel2 = playerL2.getImage();
-		Image newing1 = imager1.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
-		Image newing2 = imager2.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
+		Image newing1 = imager1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+		Image newing2 = imager2.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		Image newing3 = imagel1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		Image newing4 = imagel1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		playerR1 = new ImageIcon(newing1);
@@ -162,7 +162,7 @@ public class yosi extends JLabel{
 		right = false;
 		up = false;
 		down = false;
-		life = 4;
+//		life = 4;
 			
 		setIcon(playerR1);
 		setSize(SIZE, SIZE);
@@ -188,6 +188,7 @@ public class yosi extends JLabel{
 				x = x - SPEED;
 				x_right = x + SIZE;
 				setLocation(x, y);
+				
 				try {
 					Thread.sleep(10); // 0.01초
 				} catch (InterruptedException e) {
