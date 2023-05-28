@@ -49,6 +49,22 @@ public class game_screen_delete extends JFrame {
 		initObject();
 		initSetting();
 		
+		lifeLaInit();
+		
+//		this.add(laLifeCount);
+//		this.add(laLifeCount2);
+//		this.add(laLifeCount3);
+//		laLifeCount.setBounds(0, 0, 50, 50);
+//		laLifeCount2.setBounds(50, 0, 50, 50);
+//		laLifeCount3.setBounds(100, 0, 50, 50);
+//		
+//		this.add(laLifeCount4);
+//		this.add(laLifeCount5);
+//		this.add(laLifeCount6);
+//		laLifeCount4.setBounds(850, 0, 50, 50);
+//		laLifeCount5.setBounds(900, 0, 50, 50);
+//		laLifeCount6.setBounds(950, 0, 50, 50);
+		
 		if (dinosaur.equals(Chosen_dinosaur.DINOSAUR1)) {
 			yosi = new yosi();
 			add(yosi);
@@ -131,6 +147,8 @@ public class game_screen_delete extends JFrame {
 			}.start();
 		}
 		
+//		lifeLaInit();
+		
 		initListener();
 		meteorAppear();
 		meteorMove();
@@ -140,7 +158,7 @@ public class game_screen_delete extends JFrame {
 		
 		setVisible(true);
 		
-		lifeLaInit();
+////		lifeLaInit();
 		this.add(laLifeCount);
 		this.add(laLifeCount2);
 		this.add(laLifeCount3);
@@ -154,6 +172,13 @@ public class game_screen_delete extends JFrame {
 		laLifeCount4.setBounds(850, 0, 50, 50);
 		laLifeCount5.setBounds(900, 0, 50, 50);
 		laLifeCount6.setBounds(950, 0, 50, 50);
+		
+//		laLifeCount.setVisible(true);
+//		laLifeCount2.setVisible(true);
+//		laLifeCount3.setVisible(true);
+//		laLifeCount4.setVisible(true);
+//		laLifeCount5.setVisible(true);
+//		laLifeCount6.setVisible(true);
 		
 	}
 //-------------------------------------------------------------------------------------여기까지 생성자
@@ -184,13 +209,13 @@ public class game_screen_delete extends JFrame {
 		laLifeCount5 = new JLabel(lifeCounticon);
 		laLifeCount6 = new JLabel(lifeCounticon);
 		
-		small = new ImageIcon("Yosi_Select.png");
+		small = new ImageIcon("Yosi_Select_small.png");
 		small_yosi = new JLabel(small);
 		
-		small1 = new ImageIcon("Crong_Select.png");
+		small1 = new ImageIcon("Crong_Select_small.png");
 		small_crong = new JLabel(small1);
 		
-		small2 = new ImageIcon("Dooley_Select.png");
+		small2 = new ImageIcon("Dooley_Select_small.png");
 		small_dooley = new JLabel(small2);
 	}
 	
