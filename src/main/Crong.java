@@ -25,7 +25,7 @@ public class Crong extends JLabel{
 	private final int JUMPSPEED = 2; // up, down
 	
 	private int state = 0; // 0 : live , 1 : die
-	private int life;
+	private int life=3;
 
 	
 	public int getX_right() {
@@ -106,18 +106,18 @@ public class Crong extends JLabel{
 	
 	private void initObject() {
 		
-		playerR1 = new ImageIcon("crongR_1.png");
-		playerR2 = new ImageIcon("crongR_2.png");
 		playerL1 = new ImageIcon("crongL_1.png");
 		playerL2 = new ImageIcon("crongL_2.png");
+		playerR1 = new ImageIcon("crongR_1.png");
+		playerR2 = new ImageIcon("crongR_2.png");
 		Image imager1 = playerR1.getImage();
 		Image imager2 = playerR2.getImage();
 		Image imagel1 = playerL1.getImage();
 		Image imagel2 = playerL2.getImage();
 		Image newing1 = imager1.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
-		Image newing2 = imager2.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
+		Image newing2 = imager2.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		Image newing3 = imagel1.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
-		Image newing4 = imagel1.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
+		Image newing4 = imagel1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		playerR1 = new ImageIcon(newing1);
 		playerR2 = new ImageIcon(newing2);
 		playerL1 = new ImageIcon(newing3);
@@ -128,8 +128,12 @@ public class Crong extends JLabel{
 		imagel2 = playerL2.getImage();
 	}
 	
+	
+	
+
+	
 	private void initSetting() {
-		x = 200;
+		x = 80;
 		y = 450;
 		x_right = x + SIZE;
 		y_bottom = y + SIZE;
@@ -137,7 +141,7 @@ public class Crong extends JLabel{
 		right = false;
 		up = false;
 		down = false;
-		life = 5;
+//		life = 5;
 			
 		setIcon(playerR1);
 		setSize(SIZE, SIZE);
@@ -232,5 +236,8 @@ public class Crong extends JLabel{
 		}).start();
 	}
 	*/
+	public int getLife() {
+		// TODO Auto-generated method stub
+		return life;
+	}
 }
-
