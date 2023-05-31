@@ -1,0 +1,73 @@
+package main;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class Winner_Panel extends JFrame{
+	
+//	private Crong crong;
+//	private yosi yosi;
+//	private Dooley dooley;
+	
+	private JLabel small_yosi, small_dooley, small_crong;
+	private ImageIcon small, small1, small2;
+	
+	private JLabel mContext;;
+	
+	public Winner_Panel(String dinosaur) {
+		
+		initObject();
+		initSetting();
+		image_set();
+		initListener();
+		
+		if(dinosaur.equals(Chosen_dinosaur.DINOSAUR1)) {
+			mContext.add(small_yosi);
+			small_yosi.setBounds(450,160,143,143);
+		}
+		else if (dinosaur.equals(Chosen_dinosaur.DINOSAUR2)) {
+			mContext.add(small_crong);
+			small_crong.setBounds(450,160,110,149);
+			
+		}
+		else if (dinosaur.equals(Chosen_dinosaur.DINOSAUR3)) {
+			mContext.add(small_dooley);
+			small_dooley.setBounds(450,160,100,145);
+		}
+	}
+	
+	private void initObject() {
+		mContext = new JLabel(new ImageIcon("dinosaur_age.png"));
+		setContentPane(mContext);
+	}
+	private void initSetting() {
+		setTitle("Game Over");
+		setUndecorated(true);
+		setLayout(null);
+		setSize(Test.SCREEN_WIDTH, Test.SCREEN_HEIGHT);
+		setResizable(false);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	private void image_set() {
+		small = new ImageIcon("Yosi_Select.png");
+		small_yosi = new JLabel(small);
+
+		small1 = new ImageIcon("Crong_Select.png");
+		small_crong = new JLabel(small1);
+
+		small2 = new ImageIcon("Dooley_Select.png");
+		small_dooley = new JLabel(small2);
+	}
+	
+	private void initListener() {
+		
+	}
+	
+//	public static void main(String[] args) {
+//		new Winner_Panel("yosi");
+//	}
+}
