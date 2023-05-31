@@ -664,7 +664,7 @@ public class game_screen_delete extends JFrame {
 	private void yosimeteorAppear() { // 요시 먹뱉 운석 생성
 		for (int i = 0; i < meteorList.size(); i++) {
 			meteor = meteorList.get(i);
-			if (isYosiCrash(meteor) && !meteor.getyosiCrashstate()) {
+			if (!yosi.isCrash() && isYosiCrash(meteor) && !meteor.getyosiCrashstate()) {
 				yosi.loselife();
 				meteor.setVisible(false); // 운석 안보이게 처리
 				System.out.println(yosi.getLife());
