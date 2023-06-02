@@ -202,7 +202,7 @@ public class game_screen extends JFrame {
 
 //-------------------------------------------------------------------------------------여기까지 생성자
 	private void initObject() {
-		gameScreen = new JLabel(new ImageIcon("dinosaur_age.png"));
+		gameScreen = new JLabel(new ImageIcon("sundown.png"));
 		setContentPane(gameScreen);
 	}
 
@@ -575,7 +575,7 @@ public class game_screen extends JFrame {
 					for (int i = 0; i < starList.size(); i++) {
 						star = starList.get(i);
 
-						if (star.getY() >= 500) {
+						if (star.getY() >= 440) {
 							star.setY(40);
 							star.setyosiCrashstate(false); // 운석 재활용 0으로 초기화
 							
@@ -623,7 +623,7 @@ public class game_screen extends JFrame {
 					for (int i = 0; i < meteorList.size(); i++) {
 						meteor = meteorList.get(i);
 
-						if (meteor.getY() >= 500) {
+						if (meteor.getY() >= 440) {
 							meteorList.remove(meteor);
 							meteor.setVisible(false);
 //							meteor.setY(40);
@@ -978,7 +978,7 @@ public class game_screen extends JFrame {
 						hpItem = hpList.get(i);
 						hpItem.movement();
 
-						if (hpItem.getY() >= 500) {
+						if (hpItem.getY() >= 440) {
 							hpList.remove(i);
 							hpItem.setVisible(false);
 						}
