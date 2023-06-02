@@ -133,7 +133,7 @@ public class Crong extends JLabel {
 
 	private void initSetting() {
 		x = 80;
-		y = 450;
+		y = 320;
 		x_right = x + SIZE;
 		y_bottom = y + SIZE;
 		left = false;
@@ -241,7 +241,7 @@ public class Crong extends JLabel {
 				y = y + JUMPSPEED;
 				setLocation(x, y);
 				
-				if(y>=450) {
+				if(y>=320) {
 					break;
 				}
 				try {
