@@ -1,0 +1,77 @@
+package main;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+public class HP_item extends JLabel {
+	public final int SIZE = 30;
+	private int x, y;
+	private int mode; // 0:minus, 1:plus
+	private int direction;
+	private int speed;
+
+	private ImageIcon hp;
+	
+	private int x_right;
+	private int y_bottom;
+
+	public HP_item() {
+		x = (int) (1000 * Math.random());
+		y = 40;
+		direction = (int) (3 * Math.random());
+		speed = (int) (5 * Math.random()) + 5;
+		mode = (int) (2*Math.random());
+		hp = new ImageIcon("hp_item.png");
+
+		x_right=x+SIZE;
+		y_bottom=y+SIZE;
+		
+		setIcon(hp);
+		setSize(SIZE, SIZE);
+		setLocation(x, y);
+	}
+
+	public void movement() {
+		// 0:down-left, 1:down, 2:down-right
+		if (direction == 0) {
+			x -= speed;
+			x_right = x + SIZE;
+			y += speed;
+			y_bottom=y+SIZE;
+		} else if (direction == 1) {
+			y += speed;
+			y_bottom=y+SIZE;
+		} else if (direction == 2) {
+			x += speed;
+			x_right = x + SIZE;
+			y += speed;
+			y_bottom=y+SIZE;
+		}
+		setLocation(x, y);
+	}
+
+	public int getX() {
+		return x;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public int getMode() {
+		return mode;
+	}
+
+	public int getX_right() {
+		return x_right;
+	}
+	public int getY_bottom() {
+		return y_bottom;
+	}	
+}
