@@ -138,7 +138,7 @@ public class Dooley extends JLabel{
 	
 	private void initSetting() {
 		x = 80;
-		y = 500;
+		y = 380;
 		x_right = x + SIZE;
 		y_bottom = y + SIZE;
 		left = false;
@@ -244,7 +244,7 @@ public class Dooley extends JLabel{
 				y = y + JUMPSPEED;
 				setLocation(x, y);
 				
-				if(y>=500) {
+				if(y>=380) {
 					break;
 				}
 				try {
