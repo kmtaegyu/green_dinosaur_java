@@ -16,13 +16,13 @@ public class Init extends JFrame{
 	
 	//Change_Screen cs = new Change_Screen();
 	
-	private JLabel gameScreen;
+	private JLabel gameScreen, press;
 	private Init me = this;
 	public game_screen Game_Screen;
 	public Player player;
 	
 	private Dooley dooley;
-	private yosi yosi;
+	private Yosi yosi;
 	private Crong crong;
 	
 	private ImageIcon player1Icon, player2Icon, player3Icon; // 플레이어 기체 이미지
@@ -31,16 +31,22 @@ public class Init extends JFrame{
 	private ImageIcon selectPlaneIcon = new ImageIcon("SelectPlane.png");
 	private Image selectPlaneImg = selectPlaneIcon.getImage();
 	
+	private ImageIcon start=new ImageIcon("start.png");
+	
 	JLabel jl = new JLabel("click your dinosaur");
 	
 	public Init() {
 		initObject();
 		setting();
 		setVisible(true);
+
+		press = new JLabel(start);
+		this.add(press);
+		press.setBounds(250,100, 500, 200);
 		
 		player1Icon = new ImageIcon("Yosi_Select.png");
 		player2Icon = new ImageIcon("Crong_Select.png");
-		player3Icon = new ImageIcon("Dooley_Select.png");
+		player3Icon = new ImageIcon("Dooley_Select1.png");
 
 //		bigPlayer1icon = new ImageIcon("yosi.png");
 //		bigPlayer2icon = new ImageIcon("crong.png");
@@ -157,7 +163,7 @@ public class Init extends JFrame{
 		this.getContentPane().add(lbl);
 	}
 	public void initObject() {
-		gameScreen = new JLabel(new ImageIcon("dinosaur_age.png"));
+		gameScreen = new JLabel(new ImageIcon("morning.png"));
 		setContentPane(gameScreen);
 	}
 	public void setting() {
