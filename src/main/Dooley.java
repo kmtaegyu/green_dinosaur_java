@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 
 
 public class Dooley extends JLabel{
-	public final int SIZE = 200;
+	public final int SIZE = 100;
 	//위치상태
 	private int x;
 	private int y;
@@ -20,8 +20,11 @@ public class Dooley extends JLabel{
 	private boolean down;
 	private boolean shooting;
 	
+	private boolean moving=false;
+	
 	private ImageIcon playerR1, playerR2, playerL1, playerL2;//,playerRdie, playerLdie;
 	private final int SPEED = 4;
+	private final int JUMPSPEED = 2;
 	
 	private int state = 0; // 0 : live , 1 : die
 	private int life=3;
@@ -111,9 +114,9 @@ public class Dooley extends JLabel{
 	private void initObject() {
 		
 		playerR1 = new ImageIcon("dooleyright.png");
-		playerR2 = new ImageIcon("crongL_2.png");
+		playerR2 = new ImageIcon("dooleyright2.png");
 		playerL1 = new ImageIcon("dooleyleft.png");
-		playerL2 = new ImageIcon("crongR_2.png");
+		playerL2 = new ImageIcon("dooleyleft2.png");
 		Image imager1 = playerR1.getImage();
 		Image imager2 = playerR2.getImage();
 		Image imagel1 = playerL1.getImage();
@@ -121,7 +124,7 @@ public class Dooley extends JLabel{
 		Image newing1 = imager1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		Image newing2 = imager2.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		Image newing3 = imagel1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
-		Image newing4 = imagel1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+		Image newing4 = imagel2.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		playerR1 = new ImageIcon(newing1);
 		playerR2 = new ImageIcon(newing2);
 		playerL1 = new ImageIcon(newing3);
@@ -135,7 +138,7 @@ public class Dooley extends JLabel{
 	
 	private void initSetting() {
 		x = 80;
-		y = 450;
+		y = 500;
 		x_right = x + SIZE;
 		y_bottom = y + SIZE;
 		left = false;
@@ -157,7 +160,15 @@ public class Dooley extends JLabel{
 		left = true;
 		new Thread(()-> {
 			while(left && getState() == 0) {
-				setIcon(playerL1);
+				if(moving==true) {
+					setIcon(playerL1);
+					moving=false;
+				}
+				else {
+					setIcon(playerL2);
+					moving=true;
+				}
+//				setIcon(playerL1);
 				//sleep(100);
 				//setIcon(playerL2);
 				if(x <= 0) {
@@ -180,7 +191,15 @@ public class Dooley extends JLabel{
 		right = true;
 		new Thread(()-> {
 			while(right && getState() == 0) {
-				setIcon(playerR1);
+				if(moving==true) {
+					setIcon(playerR1);
+					moving=false;
+				}
+				else {
+					setIcon(playerR2);
+					moving=true;
+				}
+//				setIcon(playerR1);
 				//setIcon(playerR2);
 				if(x >= 900) {
 					x = 900;
@@ -196,9 +215,7 @@ public class Dooley extends JLabel{
 			}
 		}).start();
 	}
-/*
-	// left + up, right + up
-	//@Override
+
 	public void up() {
 		//System.out.println("up");
 		up = true;
@@ -219,7 +236,6 @@ public class Dooley extends JLabel{
 		}).start();
 	}
 
-	@Override
 	public void down() {
 		//System.out.println("down");
 		down = true;
@@ -227,18 +243,29 @@ public class Dooley extends JLabel{
 			while(down) {
 				y = y + JUMPSPEED;
 				setLocation(x, y);
+				
+				if(y>=500) {
+					break;
+				}
 				try {
 					Thread.sleep(3);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
-			down = false;
+			down=false;
 		}).start();
 	}
-	*/
+	
 	public int getLife() {
 		// TODO Auto-generated method stub
 		return life;
+	}
+	public void setLife(int i) {
+		life=i;		
+	}
+	public void pluslife() {
+		if(getLife()<3)
+			life+=1;
 	}
 }
