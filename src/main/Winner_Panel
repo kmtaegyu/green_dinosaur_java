@@ -10,8 +10,9 @@ public class Winner_Panel extends JFrame{
 //	private yosi yosi;
 //	private Dooley dooley;
 	
-	private JLabel small_yosi, small_dooley, small_crong;
+	private JLabel small_yosi, small_dooley, small_crong, winner;
 	private ImageIcon small, small1, small2;
+	private ImageIcon win=new ImageIcon("win0.png");
 	
 	private JLabel mContext;;
 	
@@ -22,23 +23,34 @@ public class Winner_Panel extends JFrame{
 		image_set();
 		initListener();
 		
+		winner = new JLabel(win);
+		mContext.add(winner);
+		winner.setBounds(250,100, 500, 200);
+		
+		
+		
 		if(dinosaur.equals(Chosen_dinosaur.DINOSAUR1)) {
 			mContext.add(small_yosi);
-			small_yosi.setBounds(450,160,143,143);
+			small_yosi.setBounds(430,280,200,200);
 		}
 		else if (dinosaur.equals(Chosen_dinosaur.DINOSAUR2)) {
 			mContext.add(small_crong);
-			small_crong.setBounds(450,160,110,149);
+			small_crong.setBounds(430,280,200,200);
 			
 		}
 		else if (dinosaur.equals(Chosen_dinosaur.DINOSAUR3)) {
 			mContext.add(small_dooley);
-			small_dooley.setBounds(450,160,100,145);
+			small_dooley.setBounds(430,280,200,200);
 		}
 	}
 	
+	private void setIcon(ImageIcon win2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private void initObject() {
-		mContext = new JLabel(new ImageIcon("dinosaur_age.png"));
+		mContext = new JLabel(new ImageIcon("night.png"));
 		setContentPane(mContext);
 	}
 	private void initSetting() {
@@ -53,13 +65,13 @@ public class Winner_Panel extends JFrame{
 	}
 	
 	private void image_set() {
-		small = new ImageIcon("Yosi_Select.png");
+		small = new ImageIcon("Yosi_win.png");
 		small_yosi = new JLabel(small);
 
-		small1 = new ImageIcon("Crong_Select.png");
+		small1 = new ImageIcon("Crong_win.png");
 		small_crong = new JLabel(small1);
 
-		small2 = new ImageIcon("Dooley_Select.png");
+		small2 = new ImageIcon("Dooley_win.png");
 		small_dooley = new JLabel(small2);
 	}
 	
