@@ -53,7 +53,7 @@ public class Meteor extends JLabel {
 			x_right = x + SIZE;
 			y += speed;
 		}
-		if(y>=500) {
+		if(y>=440) {
 			setIcon(meteor_fall);
 		}
 		setLocation(x, y);
