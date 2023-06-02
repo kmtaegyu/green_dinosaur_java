@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 
-public class yosi extends JLabel{
+public class Yosi extends JLabel{
 	//private game_screen mContext;
 	public final int SIZE = 100;
 	//위치상태
@@ -20,6 +20,8 @@ public class yosi extends JLabel{
 	private boolean up;
 	private boolean down;
 	private boolean isCrash=false;
+	
+	private boolean moving=false;
 	
 	private game_screen gs;
 	
@@ -122,7 +124,7 @@ public class yosi extends JLabel{
 		this.isCrash = isCrash;
 	}
 	
-	public yosi() {
+	public Yosi() {
 		initObject();
 		initSetting();
 	}
@@ -132,7 +134,7 @@ public class yosi extends JLabel{
 	private void initObject() {
 		
 		playerR1 = new ImageIcon("yosiright1.png");
-		playerR2 = new ImageIcon("yosirhght2.png");
+		playerR2 = new ImageIcon("yosiright2.png");
 		playerL1 = new ImageIcon("yosileft1.png");
 		playerL2 = new ImageIcon("yosileft2.png");
 		Image imager1 = playerR1.getImage();
@@ -142,7 +144,7 @@ public class yosi extends JLabel{
 		Image newing1 = imager1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		Image newing2 = imager2.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		Image newing3 = imagel1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
-		Image newing4 = imagel1.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+		Image newing4 = imagel2.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
 		playerR1 = new ImageIcon(newing1);
 		playerR2 = new ImageIcon(newing2);
 		playerL1 = new ImageIcon(newing3);
@@ -174,12 +176,20 @@ public class yosi extends JLabel{
 	}
 	
 	//@Override
-	public void left(String dinosaur) {
+	public void left() {
 		//System.out.println("left");
 		left = true;
 		new Thread(()-> {
 			while(left && getState() == 0) {
-				setIcon(playerL1);
+				if(moving==true) {
+					setIcon(playerL1);
+					moving=false;
+				}
+				else {
+					setIcon(playerL2);
+					moving=true;
+				}
+//				setIcon(playerL1);
 				//sleep(100);
 				//setIcon(playerL2);
 				if(x <= 0) {
@@ -205,7 +215,15 @@ public class yosi extends JLabel{
 		right = true;
 		new Thread(()-> {
 			while(right && getState() == 0) {
-				setIcon(playerR1);
+				if(moving==true) {
+					setIcon(playerR1);
+					moving=false;
+				}
+				else {
+					setIcon(playerR2);
+					moving=true;
+				}
+//				setIcon(playerR1);
 				//setIcon(playerR2);
 				if(x >= 900) {
 					x = 900;
@@ -221,7 +239,7 @@ public class yosi extends JLabel{
 			}
 		}).start();
 	}
-/*
+
 	// left + up, right + up
 	//@Override
 	public void up() {
@@ -244,7 +262,6 @@ public class yosi extends JLabel{
 		}).start();
 	}
 
-	@Override
 	public void down() {
 		//System.out.println("down");
 		down = true;
@@ -252,14 +269,22 @@ public class yosi extends JLabel{
 			while(down) {
 				y = y + JUMPSPEED;
 				setLocation(x, y);
+				
+				if(y>=500) {
+					break;
+				}
 				try {
 					Thread.sleep(3);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
-			down = false;
+			down=false;
 		}).start();
 	}
-	*/
+
+	public void pluslife() {
+		if(getLife()<3)
+			life+=1;		
+	}
 }
